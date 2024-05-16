@@ -19,7 +19,7 @@ export default function Write() {
       desc,
     };
     if (file) {
-      const data =new FormData();
+      const data = new FormData();
       const filename = Date.now() + file.name;
       data.append("name", filename);
       data.append("file", file);
@@ -29,9 +29,16 @@ export default function Write() {
       } catch (err) {}
     }
     try {
-      const res = await axios.post("https://exploreepic.onrender.com/api/posts", newPost);
-      window.location.replace("https://exploreepic.onrender.com/api//post/" + res.data._id);
-    } catch (err) {}
+      const res = await axios.post(
+        "https://exploreepic.onrender.com/api/posts",
+        newPost
+      );
+      window.location.replace(
+        "/post/" + res.data._id
+      );
+    } catch (err) {
+      console.log("error occured", err);
+    }
   };
   return (
     <div className="write">
@@ -54,23 +61,22 @@ export default function Write() {
             placeholder="Title"
             className="writeInput"
             autoFocus={true}
-            onChange={e=>setTitle(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <input
             type="text"
             placeholder="Category"
             className="writeInput"
             autoFocus={true}
-            onChange={e=>setCat(...e.target.value)}
+            onChange={(e) => setCat(...e.target.value)}
           />
-       
         </div>
         <div className="writeFormGroup">
           <textarea
             placeholder="Tell your story..."
             type="text"
             className="writeInput writeText"
-            onChange={e=>setDesc(e.target.value)}
+            onChange={(e) => setDesc(e.target.value)}
           ></textarea>
         </div>
         <button className="writeSubmit" type="submit">
