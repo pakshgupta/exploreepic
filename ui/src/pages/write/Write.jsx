@@ -33,9 +33,10 @@ export default function Write() {
         "https://exploreepic.onrender.com/api/posts",
         newPost
       );
-      window.location.replace(
-        "/post/" + res.data._id
-      );
+      if (res.data) {
+        window.alert("Post upload successfully");
+        window.location.replace("https://exploreepic.netlify.app/");
+      }
     } catch (err) {
       console.log("error occured", err);
     }

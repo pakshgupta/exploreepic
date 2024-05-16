@@ -18,7 +18,10 @@ export default function Register() {
         email,
         password,
       });
-      res.data && window.location.replace("/login");
+      if (res.data) {
+        window.alert("Registered successfully");
+        window.location.replace("https://exploreepic.netlify.app/");
+      }
     } catch (err) {
       setError(true);
     }
